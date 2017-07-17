@@ -5,7 +5,7 @@ services:
     image: postgresql
   web:
     build: .
-    env_file: .env
+    env_file: composeexample/.env
     command: python3 manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/code
