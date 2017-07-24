@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'news'    
 ]
 
 MIDDLEWARE = [
@@ -75,16 +77,16 @@ WSGI_APPLICATION = 'composeexample.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': os.environ['DATABASE_NAME'],
         'USER': os.environ['DATABASE_USER'],
         'HOST': os.environ['DATABASE_HOST'],
         'PORT': os.environ['DATABASE_PORT'],
-	'PASSWORD': os.environ['DATABASE_PASSWORD']
+        'PASSWORD': os.environ['DATABASE_PASSWORD']
     }
 }
 
-# Password validation
+# Password validationw
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -121,3 +123,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
