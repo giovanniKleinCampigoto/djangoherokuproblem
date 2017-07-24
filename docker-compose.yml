@@ -2,7 +2,9 @@ version: '2'
 
 services:
   db:
-    image: postgresql
+   image: postgresql
+   volumes:
+     - /var/lib/postgresql/data
   web:
     build: .
     env_file: composeexample/.env
