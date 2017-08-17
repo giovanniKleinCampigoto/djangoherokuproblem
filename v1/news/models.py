@@ -20,12 +20,12 @@ class Author(models.Model):
 		return self.name
 
 class Article(models.Model):
-	title = models.CharField(max_length=50)
-	slug = models.CharField(max_length=50)
+	title = models.CharField(max_length=200)
+	slug = models.CharField(max_length=200)
 	author =  models.ForeignKey(Author, on_delete=models.CASCADE)
 	subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
 	publish_date = models.DateTimeField(default=timezone.now)
-	hero_image = models.ImageField(upload_to='pictures/%Y%m%d')
+	hero_image = models.ImageField(upload_to='pictures/%Y%m%d', blank=True)
 	text = models.TextField()
 
 	def __str__(self):
@@ -36,4 +36,3 @@ class Article(models.Model):
 
 	class Meta:
 		ordering = ('title',)
-
