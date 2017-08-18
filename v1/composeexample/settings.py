@@ -39,8 +39,15 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
+    'cloudinary',
     'news'
 ]
+
+CLOUDINARY = {
+    'cloud_name' : 'djusojs7c',
+    'api_key' : '689779473881681',
+    'api_secret': 'YmWckKHPWsMXq8KfdTs3gK17nu4'
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

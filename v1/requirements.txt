@@ -6,3 +6,4 @@ Markdown
 django-guardian
 django-cors-headers
 Pillow
+cloudinary
