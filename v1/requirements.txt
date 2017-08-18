@@ -4,5 +4,5 @@ djangorestframework
 coreapi
 Markdown
 django-guardian
-
+django-cors-headers
 Pillow

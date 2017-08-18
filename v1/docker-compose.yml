@@ -5,7 +5,7 @@ services:
    image: postgresql
    volumes:
      - /var/lib/postgresql/data
-  web:
+  backend:
     build: .
     env_file: composeexample/.env
     command: python3 manage.py runserver 0.0.0.0:8000
