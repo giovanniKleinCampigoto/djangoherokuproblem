@@ -138,7 +138,8 @@ MEDIA_URL = '/media/'
 
 CORS_ORIGIN_WHITELIST = (
     'localhost',
-    'localhost:5000'
+    'localhost:5000',
+    'locahost:8000'
 )
 
 REST_FRAMEWORK = {
