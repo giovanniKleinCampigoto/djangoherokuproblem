@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 import dj_database_url
+import whitenoise
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -26,7 +27,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ['DEBUG']
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['localhost', 'wave-man.herokuapp.com']
 
 
 # Application definition
@@ -58,7 +59,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware'
+    'corsheaders.middleware.CorsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'composeexample.urls'
@@ -86,7 +88,7 @@ WSGI_APPLICATION = 'composeexample.wsgi.application'
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 DATABASES = {}
-DATABASES['default'] = dj_database_url.config()
+DATABASES['default'] = dj_database_url.config(default='postgres://wowcsuuwjklqpv:e555374c683f9be5e7fb062e9c44deab52ea8d08be9e428bae9bf7902a35dd11@ec2-54-225-88-191.compute-1.amazonaws.com:5432/d7cq075iosagrb')
 
 # Password validationw
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -142,7 +144,8 @@ MEDIA_URL = '/media/'
 CORS_ORIGIN_WHITELIST = (
     'localhost',
     'localhost:5000',
-    'locahost:8000'
+    'locahost:8000',
+    'wave-man.herokuapp.com'
 )
 
 REST_FRAMEWORK = {
