@@ -1,4 +1,6 @@
 Django==1.11.3
+gunicorn
+whitenoise
 psycopg2
 djangorestframework
 coreapi
@@ -7,3 +9,4 @@ django-guardian
 django-cors-headers
 Pillow
 cloudinary
+dj-database-url==0.4.2

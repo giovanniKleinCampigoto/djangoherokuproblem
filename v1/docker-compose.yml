@@ -1,17 +1,10 @@
 version: '2'
 
 services:
-  db:
-   image: postgresql
-   volumes:
-     - /var/lib/postgresql/data
   backend:
     build: .
     env_file: composeexample/.env
-    command: python3 manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/code
     ports:
       - "8000:8000"
-    depends_on:
-      - db
