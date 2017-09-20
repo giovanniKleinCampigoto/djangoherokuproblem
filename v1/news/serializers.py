@@ -16,7 +16,7 @@ class AuthorSerializer(serializers.ModelSerializer):
 class ArticleSerializer(serializers.ModelSerializer):
 	author = AuthorSerializer(many=False,read_only=True)
 	subject = SubjectSerializer(many=False,read_only=True)
-
+	
 	class Meta:
 		model = Article
 		fields = ('slug','title','hero_image','author', 'subject', 'publish_date', 'text')

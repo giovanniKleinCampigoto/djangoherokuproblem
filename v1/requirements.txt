@@ -10,3 +10,4 @@ django-cors-headers
 Pillow
 cloudinary
 dj-database-url==0.4.2
+django-filter

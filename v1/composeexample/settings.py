@@ -27,7 +27,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ['DEBUG']
 
-ALLOWED_HOSTS = ['localhost', 'wave-man.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', 'wave-man.herokuapp.com', 'tranquil-garden-42189.herokuapp.com']
 
 
 # Application definition
@@ -145,13 +145,15 @@ CORS_ORIGIN_WHITELIST = (
     'localhost',
     'localhost:5000',
     'locahost:8000',
-    'wave-man.herokuapp.com'
+    'wave-man.herokuapp.com',
+    'tranquil-garden-42189.herokuapp.com'
 )
 
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsReadOnly'
-    ]
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ],
+    'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',)
 }

@@ -1,11 +1,16 @@
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponse
+from django.views import View
 from rest_framework.renderers import JSONRenderer
 from rest_framework.parsers import JSONParser
 from .models import Article
 from .serializers import ArticleSerializer
 from .models import Subject
 from .serializers import SubjectSerializer
+from rest_framework import filters
+from rest_framework import generics
+from rest_framework import viewsets
 
 def subject_detail(request, pk):
 	try:
@@ -17,10 +22,22 @@ def subject_detail(request, pk):
 		serializer = SubjectSerializer(subject)
 		return JsonResponse(serializer.data)
 
-def articles_list(request):    
+class ArticleFilteredList(generics.ListAPIView):
+    serializer_class = ArticleSerializer
+
+    def get_queryset(self):
+        """
+        This view should return a list of all the purchases for
+        the user as determined by the username portion of the URL.
+        """
+        subject = self.kwargs['subject']
+        return Article.objects.filter(subject__name=subject)
+
+def articles_list(request):
     if request.method == 'GET':
         articles = Article.objects.all()
         serializer = ArticleSerializer(articles, many=True)
+        ordering = ('publish_date',)
         return JsonResponse(serializer.data, safe=False)
 
 def article_detail(request, pk):
